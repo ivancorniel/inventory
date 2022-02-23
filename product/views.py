@@ -1,3 +1,4 @@
+from turtle import title
 from django.shortcuts import render
 from rest_framework import generics, permissions
 
@@ -15,7 +16,7 @@ class ProductsListView(generics.ListAPIView):
 class ProductCreateView(generics.CreateAPIView):
     serializer_class = ProductSerilizer
     permission_classes = (permissions.IsAuthenticated,)
-
+    queryset = Product.objects.all() 
 
 class ProductUpdateView(generics.UpdateAPIView):
     queryset = Product.objects.all()

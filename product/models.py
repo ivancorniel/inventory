@@ -7,7 +7,7 @@ from django.db.models.signals import post_save
 class Product(models.Model):
     title = models.CharField(max_length=32)
     notes = models.TextField()
-    picture = models.ImageField(upload_to='product_images', null=True, blank=True)
+    picture = models.ImageField(upload_to='product_images/', null=True, blank=True)
     amount = models.IntegerField(default=0)
 
     @receiver(post_save, sender='product.Transaction')
@@ -37,6 +37,7 @@ class Transaction(models.Model):
     amount = models.IntegerField()
     notes = models.TextField()
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    order_by = '-id'
 
     def __str__(self):
         return str(self.product) + ' | ' + str(self.transaction_date) + ' | ' + self.transaction_type + ' | ' + str(self.amount)
