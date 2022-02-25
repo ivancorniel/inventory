@@ -12,10 +12,9 @@ class ProductSerilizer(ModelSerializer):
 
 
 class TransactionSerilizer(ModelSerializer):
-    product = serializers.SlugRelatedField(slug_field="title", read_only=True)    
+    product_id = serializers.PrimaryKeyRelatedField(read_only=True)    
     created_by = serializers.SlugRelatedField(slug_field="username", read_only=True)
 
     class Meta:
-        
         model = Transaction
-        fields = 'id', 'transaction_date', 'product', 'transaction_type', 'amount', 'notes', 'product', 'created_by', 'created_by'
+        fields = 'id', 'transaction_date', 'product_id', 'transaction_type', 'amount', 'notes', 'product', 'created_by', 'created_by'
