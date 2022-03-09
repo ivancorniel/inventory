@@ -76,16 +76,16 @@ WSGI_APPLICATION = 'inventory.wsgi.application'
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'inventory',
-        'USER': 'postgres',
-        'PASSWORD': os.getenv('DB_PASS'),
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'inventory',
+#         'USER': 'postgres',
+#         'PASSWORD': os.getenv('DB_PASS'),
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
