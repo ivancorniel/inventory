@@ -2,6 +2,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 import os
+import django_heroku
 
 load_dotenv()
 
@@ -166,3 +167,5 @@ CORS_ALLOW_HEADERS = [
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = True
+
+django_heroku.settings(locals())
