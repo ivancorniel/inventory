@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'inventory',
         'USER': 'postgres',
         'PASSWORD': os.getenv('DB_PASS'),
-        'HOST': 'postgres://tqsxnkywtpryll:69e0e671cd4d19187fcfc1ce760fdd7f80282763bbbec2b3d074cc858e092d28@ec2-3-230-238-86.compute-1.amazonaws.com:5432/d27jq0lb3o6i5e',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
