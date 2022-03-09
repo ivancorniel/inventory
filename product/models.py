@@ -9,6 +9,7 @@ class Product(models.Model):
     notes = models.TextField()
     picture = models.ImageField(upload_to='product_images/', null=True, blank=True)
     amount = models.IntegerField(default=0)
+    value = models.FloatField(default=0.00)
 
     @receiver(post_save, sender='product.Transaction')
     def update_amount(sender, **kwargs):
@@ -32,12 +33,12 @@ TYPE = [
 
 class Transaction(models.Model):
     transaction_date = models.DateTimeField(auto_now_add=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='product', on_delete=models.CASCADE)
     transaction_type = models.TextField(choices=TYPE, default='OUT')
     amount = models.IntegerField()
     notes = models.TextField()
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    order_by = '-id'
+    created_by = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=1)
+
 
     def __str__(self):
         return str(self.product) + ' | ' + str(self.transaction_date) + ' | ' + self.transaction_type + ' | ' + str(self.amount)
